@@ -86,12 +86,6 @@ gulp.task("sprite", function () {
     .pipe(gulp.dest("build/img"));
 });
 
-gulp.task("fonts", function () {
-  return gulp.src("source/fonts/*.{woff,woff2}")
-    .pipe(plumber())
-    .pipe(gulp.dest("build/fonts"));
-});
-
 gulp.task("serve", function() {
   server.init({
     server: "build/"
@@ -117,7 +111,6 @@ gulp.task("build", function (done) {
       "sprite",
       "html",
       "script",
-      "fonts",
       done
   );
 });
