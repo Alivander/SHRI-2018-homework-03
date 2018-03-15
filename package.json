@@ -1,8 +1,8 @@
 {
-  "name": "Name",
+  "name": "Terminator-Interface",
   "version": "1.0.0",
   "private": true,
-  "description": "Личный проект",
+  "description": "Homework for SHRI-2018",
   "devDependencies": {
     "@htmlacademy/editorconfig-cli": "1.x",
     "autoprefixer": "7.2.x",
