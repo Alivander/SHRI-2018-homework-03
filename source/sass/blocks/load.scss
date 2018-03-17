@@ -1,0 +1,38 @@
+@keyframes load-motion {
+  0%, 24% {
+    transform: translateY(0);
+  }
+  25%, 49% {
+    transform: translateY(-14px);
+  }
+  50%, 74% {
+    transform: translateY(-28px);
+  }
+  75%, 99% {
+    transform: translateY(-42px);
+  }
+  100% {
+    transform: translateY(-56px);
+  }
+}
+
+.load {
+  width: 200px;
+  height: 56px;
+  overflow: hidden;
+}
+
+.load__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation-name: load-motion;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.load__fragment {
+  width: 40px;
+  font-size: 12px;
+}
