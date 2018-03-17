@@ -2,17 +2,23 @@
   0% {
     transform: translate(-50px, -30px) rotate(0deg) scale(1);
   }
+  10% {
+    transform: translate(-70px, -120px) rotate(-30deg) scale(0.7);
+  }
   20% {
-    transform: translate(-20px, -50px) rotate(45deg) scale(1.5);
+    transform: translate(-20px, -90px) rotate(45deg) scale(1.5);
   }
   50% {
-    transform: translate(-30px, 30px) rotate(20deg) scale(0.7);
+    transform: translate(-50px, 30px) rotate(20deg) scale(0.7);
   }
-  75% {
+  60% {
     transform: translate(70px, -30px) rotate(200deg) scale(1.2);
   }
-  90% {
-    transform: translate(80px, 70px)  rotate(-30deg) scale(1);
+  80% {
+    transform: translate(80px, 70px)  rotate(270deg) scale(0.9);
+  }
+  80% {
+    transform: translate(120px, -70px)  rotate(-30deg) scale(1);
   }
   100% {
     transform: translate(-50px, -30px)  rotate(0deg) scale(1);
@@ -52,7 +58,7 @@
 
 .detector__center {
   animation-name: detector-scale;
-  animation-duration: 6s;
+  animation-duration: 7s;
   animation-iteration-count: infinite;
   transform-origin: center;
 }
