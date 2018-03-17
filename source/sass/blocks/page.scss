@@ -1,0 +1,50 @@
+@keyframes noise {
+  0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100% {
+    opacity: 0;
+  }
+  5%, 15%, 25%, 35%, 45%, 55%, 65% {
+    opacity: 0.25;
+  }
+  75%, 85%, 95% {
+    opacity: 0.5;
+  }
+}
+
+.page__main {
+  display: flex;
+  min-height: 100vh;
+}
+
+.page__container {
+  position: relative;
+  margin: auto;
+  background-image: url("../img/placeholder.jpg");
+  background-size: cover;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: multiply;
+  }
+
+  &::before {
+    z-index: 10;
+    background-color: $blue;
+  }
+
+  &::after {
+    z-index: 20;
+    background-color: #000000;
+    opacity: 0;
+    animation-name: noise;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+}
