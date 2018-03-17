@@ -52,9 +52,10 @@ gulp.task("script", function () {
   return gulp.src("source/js/**/*.js")
     .pipe(plumber())
     .pipe(gulp.dest("build/js"))
-    .pipe(jsmin())
-    .pipe(rename({suffix: ".min"}))
-    .pipe(gulp.dest("build/js"))
+    // .pipe(jsmin())
+    // .pipe(rename({suffix: ".min"}))
+    // .pipe(gulp.dest("build/js"))
+    .pipe(server.stream());
 });
 
 gulp.task("images", function () {
@@ -67,23 +68,6 @@ gulp.task("images", function () {
     ]))
     .pipe(gulp.dest("build/img"))
     .pipe(server.stream());
-});
-
-gulp.task("webp", function () {
-  return gulp.src("source/img/**/*.{png,jpg}")
-    .pipe(plumber())
-    .pipe(webp({quality: 90}))
-    .pipe(gulp.dest("build/img"))
-});
-
-gulp.task("sprite", function () {
-  return gulp.src("build/img/s-*.svg")
-    .pipe(plumber())
-    .pipe(svgstore({
-      inlineSvg: true
-    }))
-    .pipe(rename("sprite.svg"))
-    .pipe(gulp.dest("build/img"));
 });
 
 gulp.task("serve", function() {
@@ -107,8 +91,6 @@ gulp.task("build", function (done) {
       "clean",
       "style",
       "images",
-      "webp",
-      "sprite",
       "html",
       "script",
       done
