@@ -1,0 +1,48 @@
+@keyframes progress {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-150px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 150px;
+  height: 230px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+.progress__fragments {
+  flex-grow: 1;
+  max-width: 100%;
+  margin: 5px 0;
+  background-image: linear-gradient(to left,
+    transparentize($l-blue, 0.9) 10%, transparentize($l-blue, 0.8) 10%,
+    transparentize($l-blue, 0.8) 20%, transparentize($l-blue, 0.7) 20%,
+    transparentize($l-blue, 0.7) 30%, transparentize($l-blue, 0.6) 30%,
+    transparentize($l-blue, 0.6) 40%, transparentize($l-blue, 0.5) 40%,
+    transparentize($l-blue, 0.5) 50%, transparentize($l-blue, 0.4) 50%,
+    transparentize($l-blue, 0.4) 60%, transparentize($l-blue, 0.3) 60%,
+    transparentize($l-blue, 0.3) 70%, transparentize($l-blue, 0.2) 70%,
+    transparentize($l-blue, 0.2) 80%, transparentize($l-blue, 0.1) 80%,
+    transparentize($l-blue, 0.1) 90%, $l-blue 90%);
+    animation-name: progress;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@for $i from 1 through 7 {
+  .progress__fragments:nth-child(#{$i}) {
+    animation-delay: 0.1s * $i;
+  }
+}
