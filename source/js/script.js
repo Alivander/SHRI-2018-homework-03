@@ -8,8 +8,15 @@
   if (navigator.mediaDevices) {
     navigator.mediaDevices.getUserMedia({audio: true, video: true})
       .then(function(stream) {
-        video.srcObject = stream;
-        video.play();
+
+        if ("srcObject" in video) {
+          video.srcObject = stream;
+        } else {
+          video.src = window.URL.createObjectURL(stream);
+        }
+        video.onloadedmetadata = function(e) {
+          video.play();
+        };
 
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         const audioContext = new AudioContext();
@@ -68,6 +75,17 @@
         console.log("The following error occured: " + err);
       });
   } else {
-    alert("Your browser not supported getUserMedia!");
+    navigator.mediaDevices.getUserMedia = function(constraints) {
+
+      var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+      if (!getUserMedia) {
+        return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+      }
+
+      return new Promise(function(resolve, reject) {
+        getUserMedia.call(navigator, constraints, resolve, reject);
+      });
+    };
   };
 })();
