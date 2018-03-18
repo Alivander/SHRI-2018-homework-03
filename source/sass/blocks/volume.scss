@@ -1,0 +1,14 @@
+.volume {
+  display: flex;
+  width: 250px;
+  height: 50px;
+  padding: 10px;
+  padding-right: 0;
+  border: 1px solid $l-blue;
+  border-right: none;
+}
+
+.volume__scale {
+  flex-grow: 1;
+  //background-image: linear-gradient(to right, $l-blue, transparentize($l-blue, 0.75));
+}
