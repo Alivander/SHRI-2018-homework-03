@@ -1,5 +1,5 @@
 (function() {
-
+  const video = document.querySelector(".video");
   const canvasFrequency = document.querySelector(".player");
   const canvasVolume = document.querySelector(".volume__scale");
   const interfaceColor = "rgb(34, 236, 255)";
@@ -8,7 +8,6 @@
   if (navigator.mediaDevices) {
     navigator.mediaDevices.getUserMedia({audio: true, video: true})
       .then(function(stream) {
-          const video = document.querySelector(".video");
 
         if ("srcObject" in video) {
           video.srcObject = stream;
