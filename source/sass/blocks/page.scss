@@ -38,6 +38,10 @@
 
 .page__container {
   position: relative;
+  display: flex;
+  min-width: $screen-w;
+  height: 100vh;
+  min-height: $screen-h;
   margin: auto;
   background-image: url("../img/placeholder.jpg");
   background-size: cover;

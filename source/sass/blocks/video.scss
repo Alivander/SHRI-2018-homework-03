@@ -1,4 +1,6 @@
 .video {
   display: block;
+  width: auto;
+  min-height: 100vh;
   filter: contrast(250%) grayscale(1);
 }

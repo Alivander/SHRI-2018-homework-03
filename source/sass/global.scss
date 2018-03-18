@@ -1,6 +1,7 @@
 html,
 body {
-  min-width: $s-screen;
+  min-width: $screen-w;
+  min-height: $screen-h;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
