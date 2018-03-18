@@ -37,11 +37,12 @@
     transparentize($l-blue, 0.2) 80%, transparentize($l-blue, 0.1) 80%,
     transparentize($l-blue, 0.1) 90%, $l-blue 90%);
     animation-name: progress;
-    animation-duration: 2s;
+    animation-duration: 3s;
     animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.3, 1.91, 0.64, -0.74);
 }
 
-@for $i from 1 through 7 {
+@for $i from 1 through 12 {
   .progress__fragments:nth-child(#{$i}) {
     animation-delay: 0.1s * $i;
   }
