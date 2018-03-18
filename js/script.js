@@ -1,5 +1,5 @@
 (function() {
-  const video = document.querySelector(".video");
+
   const canvasFrequency = document.querySelector(".player");
   const canvasVolume = document.querySelector(".volume__scale");
   const interfaceColor = "rgb(34, 236, 255)";
@@ -8,8 +8,16 @@
   if (navigator.mediaDevices) {
     navigator.mediaDevices.getUserMedia({audio: true, video: true})
       .then(function(stream) {
-        video.srcObject = stream;
-        video.play();
+          const video = document.querySelector(".video");
+
+        if ("srcObject" in video) {
+          video.srcObject = stream;
+        } else {
+          video.src = window.URL.createObjectURL(stream);
+        }
+        video.onloadedmetadata = function(e) {
+          video.play();
+        };
 
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         const audioContext = new AudioContext();
@@ -68,6 +76,21 @@
         console.log("The following error occured: " + err);
       });
   } else {
-    alert("Your browser not supported getUserMedia!");
+    navigator.mediaDevices.getUserMedia = function(constraints) {
+
+      // First get ahold of the legacy getUserMedia, if present
+      var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+      // Some browsers just don't implement it - return a rejected promise with an error
+      // to keep a consistent interface
+      if (!getUserMedia) {
+        return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+      }
+
+      // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
+      return new Promise(function(resolve, reject) {
+        getUserMedia.call(navigator, constraints, resolve, reject);
+      });
+    }
   };
 })();
